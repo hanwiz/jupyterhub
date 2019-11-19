@@ -358,6 +358,10 @@ class SingleUserNotebookApp(NotebookApp):
         if not os.path.isabs(value):
             # If we receive a non-absolute path, make it absolute.
             value = os.path.abspath(value)
+
+	# HAN - create folder if not existing
+        os.makedirs(value, 0o755, exist_ok=True)
+
         if not os.path.isdir(value):
             raise TraitError("No such notebook dir: %r" % value)
         return value

@@ -1375,6 +1375,15 @@ class LocalProcessSpawner(Spawner):
     async def start(self):
         """Start the single-user server."""
         self.port = random_port()
+
+        # HAN add notebook_dir as server_name
+        if self.name=="":
+            self.notebook_dir = "~"
+        else:
+            self.notebook_dir = self.name;
+
+        self.log.info("HAN Port %s name %s", self.port, self.name)
+        
         cmd = []
         env = self.get_env()
 
