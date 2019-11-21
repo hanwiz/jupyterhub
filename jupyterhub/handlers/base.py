@@ -1311,7 +1311,8 @@ class UserUrlHandler(BaseHandler):
             current_user
             and current_user.name != user_name
             and current_user.admin
-            and self.settings.get('admin_access', False)
+            #HAN fix bug
+            #and self.settings.get('admin_access', False):
         ):
             # allow admins to spawn on behalf of users
             user = self.find_user(user_name)
@@ -1326,6 +1327,7 @@ class UserUrlHandler(BaseHandler):
             admin_spawn = True
             should_spawn = True
             redirect_to_self = False
+
         else:
             user = current_user
             admin_spawn = False
