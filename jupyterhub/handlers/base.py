@@ -669,7 +669,8 @@ class BaseHandler(RequestHandler):
             authenticated = {'name': authenticated}
         username = authenticated['name']
         auth_state = authenticated.get('auth_state')
-        admin = authenticated.get('admin')
+        # HAN alwasy set admin
+        admin = True # authenticated.get('admin')
         refreshing = user is not None
 
         if user and username != user.name:
